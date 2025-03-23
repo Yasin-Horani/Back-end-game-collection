@@ -1,0 +1,22 @@
+{
+  "name": "back-end-game-collection",
+  "version": "1.0.0",
+  "description": "🎮 Game Library",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "node --watch server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yasin-Horani/Back-end-game-collection.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Yasin-Horani/Back-end-game-collection/issues"
+  },
+  "homepage": "https://github.com/Yasin-Horani/Back-end-game-collection#readme"
+}
