@@ -33,6 +33,23 @@ Sort games using the dropdown menu (by title, price, or year).
 Add a new game by filling out the form and uploading an image.
 
 
+Back-end-game-collection/
+web application structure.
+│── backend/
+│   ├── controllers/
+│   │   ├── gameController.js
+│   ├── routes/
+│   │   ├── gameRoutes.js
+│── public/
+│   ├── css/
+│   ├── img/
+│   ├── js/
+│   ├── json/
+│   ├── index.html
+│── server.js
+│── package.json
+
+
 
 
 
