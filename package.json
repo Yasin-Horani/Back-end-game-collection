@@ -18,5 +18,14 @@
   "bugs": {
     "url": "https://github.com/Yasin-Horani/Back-end-game-collection/issues"
   },
-  "homepage": "https://github.com/Yasin-Horani/Back-end-game-collection#readme"
+  "homepage": "https://github.com/Yasin-Horani/Back-end-game-collection#readme",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "fs": "^0.0.1-security",
+    "multer": "^1.4.5-lts.2",
+    "path": "^0.12.7",
+    "uuid": "^11.1.0"
+  }
 }
