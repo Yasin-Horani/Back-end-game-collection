@@ -49,8 +49,22 @@ web application structure.
 │── server.js
 │── package.json
 
+//////////////////////////////
 
+if you have trouble on post or put follow this steps in post man:
+Make sure your request is correctly configured:
+Method: POST
+URL: http://localhost:3000/games/
 
+Headers:
+
+Content-Type: application/json
+
+Body (raw, JSON format):
+
+Click Body → Select raw
+
+Choose JSON (not Text or another format)
 
 
 
