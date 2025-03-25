@@ -47,6 +47,7 @@ web application structure.
 │   │   ├── script.js
 │   │   ├── api.js
 │   ├── json/
+│   │   ├── games.js
 │   ├── index.html
 │── server.js
 │── package.json
