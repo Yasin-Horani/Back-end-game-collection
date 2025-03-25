@@ -43,7 +43,9 @@ web application structure.
 │── public/
 │   ├── css/
 │   ├── img/
-│   ├── js/script.js
+│   ├── js/
+│   │   ├── script.js
+│   │   ├── api.js
 │   ├── json/
 │   ├── index.html
 │── server.js
