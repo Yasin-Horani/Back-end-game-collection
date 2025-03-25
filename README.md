@@ -48,7 +48,7 @@ web application structure.
 - │   │   ├── games.js
 - │   ├── index.html
 - │── server.js
-- │── package.json
+- │── swagger.js
 
 //////////////////////////////
 
