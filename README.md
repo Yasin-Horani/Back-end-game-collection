@@ -43,7 +43,7 @@ web application structure.
 │── public/
 │   ├── css/
 │   ├── img/
-│   ├── js/
+│   ├── js/script.js
 │   ├── json/
 │   ├── index.html
 │── server.js
