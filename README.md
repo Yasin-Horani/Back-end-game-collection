@@ -40,13 +40,21 @@ web application structure.
 - │   │   ├── gameRoutes.js
 - │── public/
 - │   ├── css/
+- │   │   ├── style.css
 - │   ├── img/
+- │   │   ├── street fighter GIF.gif
 - │   ├── js/
 - │   │   ├── script.js
 - │   │   ├── api.js
 - │   ├── json/
 - │   │   ├── games.js
+- │   ├── add.html
+- │   ├── collections.html
+- │   ├── dashboard.html
+- │   ├── footer.html
+- │   ├── head.html
 - │   ├── index.html
+- │   ├── nav.html
 - │── server.js
 - │── swagger.js
 
