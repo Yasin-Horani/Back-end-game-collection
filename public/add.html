@@ -13,7 +13,7 @@
     <main>
         <h1 class="title">Add Game <span><img width="70vw" src="./img/gamer ps4 GIF.gif" alt=""></span></h1>
         <div class="form-container">
-            <form action="#" method="POST" enctype="multipart/form-data">
+            <form id="addPostForm" action="#" method="POST" enctype="multipart/form-data">
 
                 <!-- Preview Image -->
                 <img id="preview" src="" alt="Image Preview">
@@ -38,6 +38,7 @@
                 <!-- Image Upload -->
                 <label for="gameImage" class="file-label">Upload Image</label>
                 <input type="file" id="gameImage" name="gameImage" accept="image/*" required>
+                
 
                 <!-- Submit Button -->
                 <button type="submit">Add Game</button>
@@ -50,5 +51,6 @@
     </footer>
 </body>
 <script src="js/script.js"></script>
+<script src="js/api.js"></script>
 
 </html>
