@@ -76,4 +76,5 @@ Click Body → Select raw
 Choose JSON (not Text or another format)
 
 
-
+- Swagger 
+http://localhost:5500/api-docs
