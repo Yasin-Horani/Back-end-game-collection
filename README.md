@@ -17,7 +17,7 @@ Welcome to Game Library – a modern, interactive web application where you can 
 
 Clone the repository:
 
-git clone https://github.com/Yasin-Horani/Front-End-.git
+git clone https://github.com/Yasin-Horani/Back-end-game-collection.git
 
 Open your vs code and Open with live server.
 
