@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head id="head-placeholder">
+</head>
+
+<body>
+
+    <header>
+        <div id="nav-placeholder"></div>
+    </header>
+
+    <main>
+        <h1 class="title">Dashboard <span><img width="70vw" src="./img/gamer ps4 GIF.gif" alt=""></span></h1>
+        
+    
+       
+        <div class="filter">
+            <div class="selecters">
+                <!-- Sort Filter-->
+                <label for="gameSelect" class="gameSecter">Select Game to Update
+                    <select id="Selectgame">
+                        <option value="{id}">{gametitle}</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+        <!-- Update Game Form -->
+        <div class="form-container">
+            <form id="updateGameForm">
+                <input type="hidden" id="gameId">
+                
+                <label for="gameTitle">Title:</label>
+                <input type="text" id="gameTitle" required>
+                
+                <label for="gameYear">Year:</label>
+                <input type="number" id="gameYear" min="1990" max="2026" required>
+                
+                <label for="gamePrice">Price (€):</label>
+                <input type="number" id="gamePrice" required step="0.01">
+                
+                <label for="gameCategory">Category:</label>
+                <input type="text" id="gameCategory" required>
+                
+                <button id="updateGame" type="submit">Update Game</button>
+                <button id="DeleteGame" type="submit">Delete Game</button>
+
+            </form>
+        </div>
+    
+    </main>
+    <footer>
+        <div id="footer-placeholder"></div>
+    </footer>
+</body>
+<script src="js/script.js"></script>
+<script src="js/updateDeleteGame.js"></script>
+
+</html>
