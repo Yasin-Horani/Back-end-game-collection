@@ -11,7 +11,7 @@ const readGames = () => {
     const data = fs.readFileSync(DATA_FILE, "utf-8");
     return JSON.parse(data);
   } catch (error) {
-    console.error("❌ Fout bij lezen van bestand:", error);
+    console.error("❌ Error reading file:", error);
     return { games: [] };
   }
 };
@@ -21,7 +21,7 @@ const writeGames = (games) => {
   try {
     fs.writeFileSync(DATA_FILE, JSON.stringify({ games }, null, 4));
   } catch (error) {
-    console.error("❌ Fout bij schrijven van bestand:", error);
+    console.error("❌ Error writing file:", error);
   }
 };
 
