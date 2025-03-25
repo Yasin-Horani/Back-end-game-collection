@@ -63,7 +63,7 @@ web application structure.
 if you have trouble on post or put follow this steps in post man:
 Make sure your request is correctly configured:
 Method: POST
-URL: http://localhost:3000/games/
+URL: http://localhost:5500/games/
 
 Headers:
 
