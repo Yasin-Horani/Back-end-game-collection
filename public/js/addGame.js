@@ -15,61 +15,45 @@ gameImageInput.addEventListener("change", function () {
 });
 
 async function addPost(e) {
-    e.preventDefault(); // Prevent form from reloading the page
+    e.preventDefault();
 
-    // Get form values
     const title = document.querySelector("#gameTitle").value;
     const year = document.querySelector("#gameYear").value;
     const price = document.querySelector("#gamePrice").value;
     const category = document.querySelector("#gameCategory").value;
-    const imgFile = gameImageInput.files[0];
+    const imgFile = document.querySelector("#gameImage").files[0];
 
     if (!title || !year || !price || !category || !imgFile) {
         alert("❌ Please fill in all fields!");
         return;
     }
 
-    // Convert image to Base64
-    const reader = new FileReader();
-    reader.readAsDataURL(imgFile);
-    reader.onload = async function () {
-        const imgData = reader.result; // Base64 image string
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("year", parseInt(year));
+    formData.append("price", parseFloat(price));
+    formData.append("category", category);
+    formData.append("image", imgFile);
 
-        // Create game object
-        const newGame = {
-            img: imgData,  // Store image as Base64 string
-            title,
-            year: parseInt(year),
-            price: parseFloat(price),
-            category
-        };
+    try {
+        const response = await fetch("http://localhost:5500/games", {
+            method: "POST",
+            body: formData,
+        });
 
-        try {
-            // Send POST request to backend
-            const response = await fetch("http://localhost:5500/games", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(newGame),
-            });
-
-            if (!response.ok) {
-                throw new Error("Failed to add game.");
-            }
-
-            const result = await response.json();
-            alert("✅ Game added successfully!");
-
-            // Redirect to home or game list page
-            window.location.href = "index.html"; // Change as needed
-
-        } catch (error) {
-            console.error("❌ Error:", error);
-            alert("❌ Failed to add game.");
+        if (!response.ok) {
+            throw new Error("Failed to add game.");
         }
-    };
+
+        alert("✅ Game added successfully!");
+        window.location.href = "index.html";
+
+    } catch (error) {
+        console.error("❌ Error:", error);
+        alert("❌ Failed to add game.");
+    }
 }
+
 
 // Attach event listener
 addPostForm.addEventListener("submit", addPost);

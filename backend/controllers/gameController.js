@@ -1,28 +1,31 @@
 const fs = require("fs");
 const path = require("path");
+const multer = require("multer");
 
-// path to games.json file
+// Stel opslaglocatie in voor afbeeldingen
+const upload = multer({
+    dest: path.resolve(__dirname, "../../public/img/"), // Opslagmap
+    limits: { fileSize: 5 * 1024 * 1024 }, // Max 5MB
+});
+
 const DATA_FILE = path.resolve(__dirname, "../../public/json/games.json");
 
-// helper function to read games
 const readGames = () => {
-  try {
-    if (!fs.existsSync(DATA_FILE)) return { games: [] };
-    const data = fs.readFileSync(DATA_FILE, "utf-8");
-    return JSON.parse(data);
-  } catch (error) {
-    console.error("❌ Error reading file:", error);
-    return { games: [] };
-  }
+    try {
+        if (!fs.existsSync(DATA_FILE)) return { games: [] };
+        return JSON.parse(fs.readFileSync(DATA_FILE, "utf-8"));
+    } catch (error) {
+        console.error("❌ Error reading file:", error);
+        return { games: [] };
+    }
 };
 
-// helper function to write games
 const writeGames = (games) => {
-  try {
-    fs.writeFileSync(DATA_FILE, JSON.stringify({ games }, null, 4));
-  } catch (error) {
-    console.error("❌ Error writing file:", error);
-  }
+    try {
+        fs.writeFileSync(DATA_FILE, JSON.stringify({ games }, null, 4));
+    } catch (error) {
+        console.error("❌ Error writing file:", error);
+    }
 };
 
 // get all games
@@ -41,28 +44,24 @@ exports.getGameById = (req, res) => {
 
 // add new game
 exports.addGame = (req, res) => {
-  console.log("📥 Received data:", req.body); // Debug log
-
   const gamesData = readGames();
-  const newId =
-    gamesData.games.length > 0
-      ? Math.max(...gamesData.games.map((g) => g.id)) + 1
-      : 1;
-
-  const { img, title, year, price, category } = req.body;
-
-  if (!img || !title || !year || !price || !category) {
-    console.error("❌ Missing fields in request:", req.body);
-    return res.status(400).json({ message: "❌ Missing required fields" });
+  const newId = gamesData.games.length > 0 ? Math.max(...gamesData.games.map(g => g.id)) + 1 : 1;
+  
+  const { title, year, price, category } = req.body;
+  if (!title || !year || !price || !category || !req.file) {
+      return res.status(400).json({ message: "❌ Missing required fields" });
   }
 
-  const newGame = { id: newId, img, title, year, price, category };
+  const imgPath = `img/${req.file.filename}`;
+
+  const newGame = { id: newId, img: imgPath, title, year, price, category };
   gamesData.games.push(newGame);
   writeGames(gamesData.games);
 
-  console.log("✅ New game added:", newGame);
   res.status(201).json(newGame);
 };
+
+exports.upload = upload.single("image");
 
 // update game
 exports.updateGame = (req, res) => {

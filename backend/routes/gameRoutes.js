@@ -49,16 +49,19 @@ router.get("/:id", gameController.getGameById);
  *   post:
  *     summary: Add a new game
  *     tags: [Games]
+ *     consumes:
+ *       - multipart/form-data
  *     requestBody:
  *       required: true
  *       content:
- *         application/json:
+ *         multipart/form-data:
  *           schema:
  *             type: object
  *             properties:
- *               img:
+ *               image:
  *                 type: string
- *                 example: "img/Aftereffects Tentacles GIF.gif"
+ *                 format: binary
+ *                 description: Image file to upload
  *               title:
  *                 type: string
  *                 example: "CARRION"
@@ -75,7 +78,7 @@ router.get("/:id", gameController.getGameById);
  *       201:
  *         description: Game added successfully
  */
-router.post("/", gameController.addGame);
+router.post("/", gameController.upload, gameController.addGame);
 
 /**
  * @swagger
