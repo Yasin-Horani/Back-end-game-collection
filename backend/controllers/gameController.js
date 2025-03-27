@@ -2,9 +2,9 @@ const fs = require("fs");
 const path = require("path");
 const multer = require("multer");
 
-// Stel opslaglocatie in voor afbeeldingen
+// Multer configuration for file upload
 const upload = multer({
-    dest: path.resolve(__dirname, "../../public/img/"), // Opslagmap
+    dest: path.resolve(__dirname, "../../public/img/"), 
     limits: { fileSize: 5 * 1024 * 1024 }, // Max 5MB
 });
 
