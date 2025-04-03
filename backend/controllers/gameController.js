@@ -4,28 +4,28 @@ const multer = require("multer");
 
 // Multer configuration for file upload
 const upload = multer({
-    dest: path.resolve(__dirname, "../../public/img/"), 
-    limits: { fileSize: 5 * 1024 * 1024 }, // Max 5MB
+  dest: path.resolve(__dirname, "../../public/img/"),
+  limits: { fileSize: 5 * 1024 * 1024 }, // Max 5MB
 });
 
 const DATA_FILE = path.resolve(__dirname, "../../public/json/games.json");
 
 const readGames = () => {
-    try {
-        if (!fs.existsSync(DATA_FILE)) return { games: [] };
-        return JSON.parse(fs.readFileSync(DATA_FILE, "utf-8"));
-    } catch (error) {
-        console.error("❌ Error reading file:", error);
-        return { games: [] };
-    }
+  try {
+    if (!fs.existsSync(DATA_FILE)) return { games: [] };
+    return JSON.parse(fs.readFileSync(DATA_FILE, "utf-8"));
+  } catch (error) {
+    console.error("❌ Error reading file:", error);
+    return { games: [] };
+  }
 };
 
 const writeGames = (games) => {
-    try {
-        fs.writeFileSync(DATA_FILE, JSON.stringify({ games }, null, 4));
-    } catch (error) {
-        console.error("❌ Error writing file:", error);
-    }
+  try {
+    fs.writeFileSync(DATA_FILE, JSON.stringify({ games }, null, 4));
+  } catch (error) {
+    console.error("❌ Error writing file:", error);
+  }
 };
 
 // get all games
@@ -45,14 +45,18 @@ exports.getGameById = (req, res) => {
 // add new game
 exports.addGame = (req, res) => {
   const gamesData = readGames();
-  const newId = gamesData.games.length > 0 ? Math.max(...gamesData.games.map(g => g.id)) + 1 : 1;
-  
+  const newId =
+    gamesData.games.length > 0
+      ? Math.max(...gamesData.games.map((g) => g.id)) + 1
+      : 1;
+
   const { title, year, price, category } = req.body;
-  if (!title || !year || !price || !category || !req.file) {
-      return res.status(400).json({ message: "❌ Missing required fields" });
+  if (!title || !year || !price || !category) {
+    return res.status(400).json({ message: "❌ Missing required fields" });
   }
 
-  const imgPath = `img/${req.file.filename}`;
+  // Allow missing image
+  const imgPath = req.file ? `img/${req.file.filename}` : "img/default.png";
 
   const newGame = { id: newId, img: imgPath, title, year, price, category };
   gamesData.games.push(newGame);
