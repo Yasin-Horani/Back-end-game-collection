@@ -58,8 +58,6 @@ web application structure.
 - │── server.js
 - │── swagger.js
 
-//////////////////////////////
-
 if you have trouble on post or put follow this steps in post man:
 Make sure your request is correctly configured:
 Method: POST
